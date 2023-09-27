@@ -1,33 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Header from './Header';
+import Box from './Box';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // the first argument of useState is the default value
+  const [favoriteBeverage, setFavoriteBeverage] = useState("");
+
+  const selectBubbleTea = () => {
+    setFavoriteBeverage("Bubble Tea");
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header></Header>
+      <p>Select your favorite beverage</p>
+      <button onClick={selectBubbleTea}>Choose Bubble Tea</button>
+      <button onClick={()=>setFavoriteBeverage("Coffee")}>Choose Coffee</button>
+      
+      <Box bgcolor="azure" borderColor="black">
+        <p>Your favorite drink is {favoriteBeverage}</p>
+      </Box>
+      
+      {/* <Box bgcolor="red" borderColor="yellow">She sells seashell</Box>
+      <Box bgcolor="purple" borderColor="red">Jack and Jill</Box>
+      <Box bgcolor="blue" borderColor="orange">
+        <h2>Mary has a little lamb</h2>
+        <h3>which wool is white as snow</h3>
+
+      </Box> */}
+      
     </>
   )
 }
